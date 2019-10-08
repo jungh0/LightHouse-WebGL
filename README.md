@@ -1,8 +1,6 @@
 # LightHouse-WebGL
 
-***2019 그래픽스 텀프로젝트입니다.***
-
-<pre><a href="https://jungh0.github.io/LightHouse-WebGl/LightHouse/">https://jungh0.github.io/LightHouse-WebGl/LightHouse/</a></pre>
+<pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightHouse/">https://jungh0.github.io/LightHouse-WebGL/LightHouse/</a></pre>
 
 ## LICENSE
 ```
