@@ -118,20 +118,3 @@ function makeCloud(x, y, white) {
     renderCircle(0.1, 0.2 + x, 0.15 + y, white, Math.PI, 1)
     renderCircle(0.1, 0.3 + x, 0.2 + y, white, Math.PI, 1)
 }
-
-//마우스 리스너
-function onMouseUp(event) {
-    var mx = event.clientX;
-    var my = event.clientY;
-    var canvas = document.getElementById('gl-canvas');
-    var rect = canvas.getBoundingClientRect();
-    mx = mx - rect.left;
-    my = my - rect.top;
-    if (mx == 250) { mx = 0; }
-    if (mx < 250) { mx = (250 - mx) / 250 * -1 }
-    if (mx > 250) { mx = (mx - 250) / 250 }
-    if (my == 250) { mx = 0; }
-    if (my < 250) { my = (250 - my) / 250 }
-    if (my > 250) { my = (my - 250) / 250 * -1 }
-    console.log({ x: mx, y: my });
-}

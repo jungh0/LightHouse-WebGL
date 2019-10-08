@@ -90,3 +90,21 @@ function moveLight() {
         LSize = 1
     }
 }
+
+//마우스 리스너
+function onMouseUp(event) {
+    var mx = event.clientX;
+    var my = event.clientY;
+    var canvas = document.getElementById('gl-canvas');
+    var rect = canvas.getBoundingClientRect();
+    mx = mx - rect.left;
+    my = my - rect.top;
+    if (mx == 250) { mx = 0; }
+    if (mx < 250) { mx = (250 - mx) / 250 * -1 }
+    if (mx > 250) { mx = (mx - 250) / 250 }
+    if (my == 250) { mx = 0; }
+    if (my < 250) { my = (250 - my) / 250 }
+    if (my > 250) { my = (my - 250) / 250 * -1 }
+    var tmp = "&nbspx: " + mx + " y: " + my
+    document.getElementById("location").innerHTML=tmp;
+}
