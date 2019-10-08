@@ -61,7 +61,7 @@ function moveLight() {
     var yelloT = vec4(1, 1, 0, 0.45);
     renderCircle(3, 0.44, 0.48, yelloT, Math.PI * LAngle / 2 * LightVec, LSize)
 
-    console.log(LSizeF);
+    //console.log(LSizeF);
 
     if (LSize == 10) {
         LSizeF = false
