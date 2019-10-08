@@ -84,9 +84,35 @@ function mainvec(reverse) {
 
     //ground start
     var color = vec4(0.11, 0.18, 0.29, 1);
-    var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];
+    var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.05),vec2(-0.1,-0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];  
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
+
+    var vertices = [vec2(0.592, -0.132), vec2(0.608, -0.116),vec2(0.64,-0.136)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var vertices = [vec2(0.224, -0.116), vec2(0.236, -0.1),vec2(0.248,-0.12),vec2(0.252,-0.1),vec2(0.268,-0.116)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+    offset_=0;
+    for( i=0;i<3;i++)
+    {
+        var vertices = [
+            vec2( 0.032+offset_, -0.104 ),
+            vec2(  0.032+offset_,  -0.05 ),
+            vec2(  0.04+offset_, -0.1 ),
+            vec2( 0.04+offset_, -0.05)
+        ];
+    
+        makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+        drawFAN(0, vertices.length)
+    
+        offset_=offset_+0.1;
+    }
+
+    
+
     //ground end
 
     //lighthouse start
