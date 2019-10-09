@@ -99,7 +99,16 @@ function mainvec(reverse) {
     drawFAN(0, vertices.length)
 
     var color = vec4(0.11, 0.18, 0.29, 1);
-    var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.05), vec2(-0.1, -0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];
+
+    var vertices = [vec2(-0.34, -0.088), vec2(-0.316, -0.06), vec2(-0.3, -0.064), vec2(-0.28, -0.084)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var vertices = [vec2(-0.896, -0.14), vec2(-0.884, -0.116), vec2(-0.872, -0.112), vec2(-0.856, -0.128)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var vertices = [vec2(-1, -0.15),vec2(-0.7, -0.15), vec2(-0.5, -0.05), vec2(-0.1, -0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
 
@@ -110,6 +119,39 @@ function mainvec(reverse) {
     var vertices = [vec2(0.224, -0.116), vec2(0.236, -0.1), vec2(0.248, -0.12), vec2(0.252, -0.1), vec2(0.268, -0.116)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
+    //make the tree
+    var vertices = [vec2(-0.208, -0.104), vec2(-0.188, -0.052), vec2(-0.176, -0.048), vec2(-0.192, -0.096)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var vertices = [vec2(-0.188, -0.052), vec2(-0.2, -0.028), vec2(-0.184, -0.02), vec2(-0.176, -0.048)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var vertices = [vec2(-0.2, -0.028), vec2(-0.2, 0.012), vec2(-0.18, 0.012), vec2(-0.184, -0.02)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    renderCircle(0.025, -0.2, 0.012, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    renderCircle(0.015, -0.22, 0.009, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    renderCircle(0.020, -0.175, 0.01, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+
+    var vertices = [vec2(-0.192, -0.048), vec2(-0.236, -0.036), vec2(-0.228, -0.028), vec2(-0.192, -0.032)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    renderCircle(0.02, -0.236, -0.036, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    renderCircle(0.018, -0.23, -0.018, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    renderCircle(0.015, -0.216, -0.008, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    
+
+    var vertices = [vec2(-0.184, -0.032), vec2(-0.156, -0.012), vec2(-0.156, -0.024), vec2(-0.184, -0.044)];
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    renderCircle(0.018, -0.156, -0.012, vec4(0.11,0.18,0.29,1), 1, 1, reverse)
+    renderCircle(0.015, -0.143, -0.023, vec4(0.11,0.18,0.29,1), 1, 1, reverse) 
+    // tree end
 
     for (offset_ = 0; offset_ < 0.3; offset_ += 0.1) {
         var vertices = [
