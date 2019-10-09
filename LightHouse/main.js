@@ -2,6 +2,8 @@ var gl;
 var points;
 
 var white = vec4(1, 1, 1, 1);
+var whiteLv1 = vec4(0.79,0.88,0.9,0.3);
+var whiteLv2 = vec4(0.30,0.35,0.55,0.3);
 
 var LightVec = -1 //등대 방향 바꾸기 1: 왼쪽 -1: 오른쪽
 var LAngle = 1
@@ -199,6 +201,8 @@ function mainvec(reverse) {
     //lighthouse light end
 
     //moon start
+    renderCircle(0.16, -0.46, 0.26, whiteLv2, 1, 1, reverse)
+    renderCircle(0.12, -0.46, 0.26, whiteLv1, 1, 1, reverse)
     renderCircle(0.1, -0.46, 0.26, white, 1, 1, reverse)
     //moon end
 
