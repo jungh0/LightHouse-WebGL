@@ -75,10 +75,10 @@ function moveLight(reverse) {
 
     if (reverse) {
         var yelloT = vec4(1, 1, 0, 0.1);
-        renderCircle(3, 0.44, 0.48, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, true)
+        renderCircle(3, 0.44, 0.53, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, true)
     } else {
         var yelloT = vec4(1, 1, 0, 0.45);
-        renderCircle(3, 0.44, 0.48, yelloT, Math.PI * LAngle / 2 * LightVec, LSize)
+        renderCircle(3, 0.44, 0.53, yelloT, Math.PI * LAngle / 2 * LightVec, LSize)
     }
     //console.log(LSizeF);
     if (LSize == 10) {

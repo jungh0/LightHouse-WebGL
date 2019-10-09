@@ -25,9 +25,14 @@ window.onload = function init() {
 
 function object() {
     //sky start
-    var color = vec4(0.26, 0.38, 0.53, 1);
+    var color = [
+        vec4(0.13, 0.2, 0.32, 1.0),
+        vec4(0.28, 0.39, 0.56, 1.0),
+        vec4(0.28, 0.39, 0.56, 1.0),
+        vec4(0.13, 0.2, 0.32, 1.0),
+    ];
     var vertices = [vec2(-1, 1), vec2(-1, -0.3), vec2(1, -0.3), vec2(1, 1),];
-    makeBuffer(vertices, makeColor(color, vertices.length))
+    makeBuffer(vertices, color)
     drawFAN(0, vertices.length)
     //sky end
 
@@ -42,7 +47,7 @@ function object() {
         tmp = true
         LightBack()
     }
-    
+
     //light start
     moveLight(false)
     //light end
@@ -74,45 +79,38 @@ function LightBack() {
 function mainvec(reverse) {
 
     if (!reverse) {
-        //black start
+        //water color start
         var color = vec4(0.26, 0.38, 0.53, 1);
         var vertices = [vec2(-1, -1), vec2(-1, -0.3), vec2(1, -0.3), vec2(1, -1),];
         makeBuffer(vertices, makeColor(color, vertices.length))
         drawFAN(0, vertices.length)
-        //black end
+        //water color end
     }
 
     //ground start
     var color = vec4(0.11, 0.18, 0.29, 1);
-    var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.05),vec2(-0.1,-0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];  
+    var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.05), vec2(-0.1, -0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
 
-    var vertices = [vec2(0.592, -0.132), vec2(0.608, -0.116),vec2(0.64,-0.136)];
+    var vertices = [vec2(0.592, -0.132), vec2(0.608, -0.116), vec2(0.64, -0.136)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
 
-    var vertices = [vec2(0.224, -0.116), vec2(0.236, -0.1),vec2(0.248,-0.12),vec2(0.252,-0.1),vec2(0.268,-0.116)];
+    var vertices = [vec2(0.224, -0.116), vec2(0.236, -0.1), vec2(0.248, -0.12), vec2(0.252, -0.1), vec2(0.268, -0.116)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
-    offset_=0;
-    for( i=0;i<3;i++)
-    {
+
+    for (offset_ = 0; offset_ < 0.3; offset_ += 0.1) {
         var vertices = [
-            vec2( 0.032+offset_, -0.104 ),
-            vec2(  0.032+offset_,  -0.05 ),
-            vec2(  0.04+offset_, -0.1 ),
-            vec2( 0.04+offset_, -0.05)
+            vec2(0.032 + offset_, -0.104),
+            vec2(0.032 + offset_, -0.05),
+            vec2(0.04 + offset_, -0.1),
+            vec2(0.04 + offset_, -0.05)
         ];
-    
         makeBuffer(vertices, makeColor(color, vertices.length), reverse)
         drawFAN(0, vertices.length)
-    
-        offset_=offset_+0.1;
     }
-
-    
-
     //ground end
 
     //lighthouse start
@@ -120,21 +118,31 @@ function mainvec(reverse) {
     var vertices = [vec2(0.3, -0.2), vec2(0.6, -0.2), vec2(0.55, 0.6), vec2(0.35, 0.6)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
-    var vertices = [vec2(0.32, 0.6), vec2(0.58, 0.6), vec2(0.58, 0.66), vec2(0.32, 0.66)];
+
+    var vertices = [vec2(0.32, 0.6), vec2(0.58, 0.6), vec2(0.58, 0.65), vec2(0.32, 0.65)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
-    var vertices = [vec2(0.41, 0.66), vec2(0.49, 0.66), vec2(0.49, 0.70), vec2(0.41, 0.70)];
+    
+    var vertices = [vec2(0.41, 0.65), vec2(0.49, 0.65), vec2(0.49, 0.68), vec2(0.41, 0.68)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
     drawFAN(0, vertices.length)
     //lighthouse end
 
     //lighthouse light start
     var color = vec4(0.95, 0.96, 0.58, 1);
-    var vertices = [vec2(0.38, 0.56), vec2(0.44, 0.56), vec2(0.44, 0.43), vec2(0.37, 0.43)];
-    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    var color = [
+        vec4(0.95, 0.96, 0.58, 1),
+        vec4(0.95, 0.96, 0.58, 1),
+        vec4(0.95, 0.96, 0.58, 0.3),
+        vec4(0.95, 0.96, 0.58, 0.3),
+    ];
+
+    var vertices = [vec2(0.36, 0.59), vec2(0.445, 0.59), vec2(0.445, 0.45), vec2(0.35, 0.45)];
+    makeBuffer(vertices, color, reverse)
     drawFAN(0, vertices.length)
-    var vertices = [vec2(0.46, 0.43), vec2(0.53, 0.43), vec2(0.52, 0.56), vec2(0.46, 0.56)];
-    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+
+    var vertices = [vec2(0.54, 0.59), vec2(0.455, 0.59),vec2(0.455, 0.45), vec2(0.55, 0.45)];
+    makeBuffer(vertices, color, reverse)
     drawFAN(0, vertices.length)
     //lighthouse light end
 
@@ -143,12 +151,12 @@ function mainvec(reverse) {
     //moon end
 
     if (reverse) {
-        //black start
+        //water effect start
         var color = vec4(0, 0, 0, 0.7);
         var vertices = [vec2(-1, -1), vec2(-1, -0.3), vec2(1, -0.3), vec2(1, -1),];
         makeBuffer(vertices, makeColor(color, vertices.length))
         drawFAN(0, vertices.length)
-        //black end
+        //water effect end
     }
 
 }
