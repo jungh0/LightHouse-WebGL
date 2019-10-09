@@ -88,6 +88,16 @@ function mainvec(reverse) {
     }
 
     //ground start
+    var color = vec4(0.12, 0.23, 0.277, 1);
+    var vertices=[vec2(-1,-0.15),vec2(-0.856,-0.052),vec2(-0.656,-0.136)]
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
+    var color = vec4(0.12, 0.23, 0.277, 1);
+    var vertices = [vec2(-0.092, -0.14), vec2(0.14, -0.016),vec2(1,-0.056), vec2(1, -0.164)];  
+    makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    drawFAN(0, vertices.length)
+
     var color = vec4(0.11, 0.18, 0.29, 1);
     var vertices = [vec2(-1, -0.15), vec2(-0.5, -0.05), vec2(-0.1, -0.1), vec2(1, -0.15), vec2(1, -0.3), vec2(-1, -0.3)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
