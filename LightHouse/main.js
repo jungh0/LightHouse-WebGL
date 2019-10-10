@@ -13,6 +13,8 @@ var LSizeF = true
 
 var speed = 0
 
+var star_x=[]
+var star_y=[]
 window.onload = function init() {
     var canvas = document.getElementById("gl-canvas");
     gl = WebGLUtils.setupWebGL(canvas);
@@ -24,7 +26,10 @@ window.onload = function init() {
 
     window.requestAnimationFrame(object);
     canvas.addEventListener("mousemove", function () { onMouseUp(event) });
-    addListener()
+    canvas.addEventListener("mouseup", function () { 
+        star_x.push(2*event.clientX/canvas.width-1)
+        star_y.push(2*(canvas.height-event.clientY)/canvas.height-1)      
+     });
 };
 
 function object() {
@@ -46,15 +51,12 @@ function object() {
     //light end
 
     lightHouseWindow()
-
     drawBuffer()
-
     if (speed == 0) {
         window.requestAnimationFrame(object);
     } else {
         setTimeout(object, speed)
     }
-
 }
 
 //슬라이드 리스너
@@ -189,8 +191,8 @@ function mainvec(reverse) {
 
     var vertices = [vec2(0.41, 0.65), vec2(0.49, 0.65), vec2(0.49, 0.68), vec2(0.41, 0.68)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
+    makeStar();
     //lighthouse end
-
     if (reverse) {
         //moon start
         renderCircle(0.6, -0.46, 0.26, transparent, whiteLv1, 1, 1, reverse)
@@ -203,6 +205,7 @@ function mainvec(reverse) {
         makeBuffer(vertices, makeColor(color, vertices.length))
         //water effect end
     }
+    
 }
 
 function lightHouseWindow() {

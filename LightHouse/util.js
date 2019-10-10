@@ -1,7 +1,10 @@
 var bufferData = [];
 var bufferDataC = [];
 var bufferLocation = [];
-
+var buffercheck=[];
+var option=false;
+var count=10;
+var random_num=0;
 //버퍼 만들기
 function makeBuffer(vertices, colors, reverse) {
     if (reverse) {
@@ -20,7 +23,50 @@ function makeBuffer(vertices, colors, reverse) {
     });
     bufferLocation.push(vec2(bufferDataLen,bufferLen))
 }
-
+function renderStar(reverse,x,y){
+    var star=[
+        vec2(x,y-0.005*3),
+        vec2(x+0.005*3,y-0.008*3),
+        vec2(x+0.003*3,y-0.003*3),
+        vec2(x,y-0.005*3),
+        vec2(x+0.008*3,y+0.001*3),
+        vec2(x+0.002*3,y+0.001*3),
+        vec2(x,y-0.005*3),
+        vec2(x+0.002*3,y+0.001*3),
+        vec2(x,y+0.008*3),
+        vec2(x,y-0.005*3),
+        vec2(x,y+0.008*3),
+        vec2(x-0.002*3,y+0.001*3),
+        vec2(x,y-0.005*3),
+        vec2(x-0.002*3,y+0.001*3),
+        vec2(x-0.008*3,y+0.001*3),
+        vec2(x,y-0.005*3),
+        vec2(x-0.003*3,y-0.003*3),
+        vec2(x-0.005*3,y-0.008*3),
+    ] 
+    var star2=[
+        vec2(x,y-0.005*4),
+        vec2(x+0.005*4,y-0.008*4),
+        vec2(x+0.003*4,y-0.003*4),
+        vec2(x,y-0.005*4),
+        vec2(x+0.008*4,y+0.001*4),
+        vec2(x+0.002*4,y+0.001*4),
+        vec2(x,y-0.005*4),
+        vec2(x+0.002*4,y+0.001*4),
+        vec2(x,y+0.008*4),
+        vec2(x,y-0.005*4),
+        vec2(x,y+0.008*4),
+        vec2(x-0.002*4,y+0.001*4),
+        vec2(x,y-0.005*4),
+        vec2(x-0.002*4,y+0.001*4),
+        vec2(x-0.008*4,y+0.001*4),
+        vec2(x,y-0.005*4),
+        vec2(x-0.003*4,y-0.003*4),
+        vec2(x-0.005*4,y-0.008*4),
+    ] 
+    makeBuffer(star2, makeColorCircle(vec4(1, 1, 1, 0.05),vec4(1, 1, 1, 0.05), star2.length), reverse)
+    makeBuffer(star, makeColorCircle(vec4(1, 1, 1, 1),vec4(1, 1, 1, 1), star.length), reverse)
+}
 function drawBuffer(){
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
@@ -40,10 +86,17 @@ function drawBuffer(){
     var vColor = gl.getAttribLocation(program, "vColor");
     gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vColor);
-
-    bufferLocation.forEach(function (element, index, array) {
-        gl.drawArrays(gl.TRIANGLE_FAN, element[0], element[1]);
-    });
+    if(option){
+        bufferLocation.forEach(function (element, index, array) {
+            gl.drawArrays(gl.TRIANGLES, element[0], element[1]);
+        });
+        option=false;
+    }
+    else{
+        bufferLocation.forEach(function (element, index, array) {
+            gl.drawArrays(gl.TRIANGLE_FAN, element[0], element[1]);
+        });
+    }
 }
 
 //draw circle
@@ -160,4 +213,29 @@ function makeCloud(x, y, white) {
     renderCircle(0.1, 0.1 + x, 0.2 + y, white, null, Math.PI, 1,false)
     renderCircle(0.1, 0.2 + x, 0.15 + y, white, null, Math.PI, 1,false)
     renderCircle(0.1, 0.3 + x, 0.2 + y, white, null, Math.PI, 1,false)
+}
+//별
+function makeStar(){
+    var i=0;
+    console.log(count);
+    console.log("asdasd"+random_num)
+    if(count==20)
+    {
+        random_num=(parseInt(Math.random()*10000))%star_x.length;
+        count=0;
+    }
+    for(i=0;i<star_x.length;i=i+1){
+        if(star_x.length>3)
+        {
+           if(i!=random_num){
+                renderStar(false,star_x[i],star_y[i]);
+                renderStar(true,star_x[i],star_y[i]);
+            }
+        }
+        else{
+                renderStar(false,star_x[i],star_y[i]);
+                renderStar(true,star_x[i],star_y[i]);
+        }
+    }
+    count++;
 }
