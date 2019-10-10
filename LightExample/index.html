@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	attribute vec4 vColor;
+	varying vec4 fColor;
+	void main()
+	{
+		fColor = vColor;
+		gl_Position = vPosition;
+	}
+</script>
+	<script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	varying vec4 fColor;
+	void main()
+	{
+		gl_FragColor = fColor;
+	}
+</script>
+	<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+	<script type="text/javascript" src="../Common/initShaders.js"></script>
+	<script type="text/javascript" src="../Common/MV.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="util.js"></script>
+</head>
+
+<body>
+	<canvas id="gl-canvas" width="500" height="500">
+		Oops ... your browser doesn't support the HTML5 canvas element
+	</canvas>
+	<br>
+	<span id="location"></span>
+	<br>
+	<input type="button" id="rotate" value="방향 변경">
+	<input type="range" min="0" max="100" value="0" onchange="rangeVal(this.value)">
+</body>
+
+</html>
