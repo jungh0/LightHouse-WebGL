@@ -219,8 +219,8 @@ function makeStar(reverse) {
     var i = 0;
     //console.log(count);
     //console.log("asdasd" + random_num)
-    if (count == 20) {
-        //random_num = (parseInt(Math.random() * 10000)) % star_x.length;
+    if (count == 20 && !reverse) {
+        random_num = (parseInt(Math.random() * 10000)) % star_x.length;
         count = 0;
     }
     for (i = 0; i < star_x.length; i = i + 1) {
@@ -233,5 +233,7 @@ function makeStar(reverse) {
             renderStar(reverse, star_x[i], star_y[i]);
         }
     }
-    count++;
+    if(!reverse){
+		count++;
+	}
 }

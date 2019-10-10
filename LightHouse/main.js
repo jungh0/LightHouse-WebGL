@@ -15,7 +15,6 @@ var speed = 0
 
 var star_x = []
 var star_y = []
-var random_num
 
 window.onload = function init() {
     var canvas = document.getElementById("gl-canvas");
@@ -42,8 +41,7 @@ function object() {
     bufferData = [];
     bufferDataC = [];
     bufferLocation = [];
-    random_num = (parseInt(Math.random() * 10000)) % star_x.length;
-
+	
     background()
 
     //light start
