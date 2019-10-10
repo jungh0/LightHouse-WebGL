@@ -40,7 +40,7 @@ function object() {
         LightBack(); tmp = true;
     }
     moveLight(false)
-    if ((!LSizeF && LightVec == 1) || (!tmp && LightVec == -1)) {
+    if(!tmp){
         LightBack()
     }
     //light end
