@@ -7,6 +7,7 @@
 
 <pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightExample/">https://jungh0.github.io/LightHouse-WebGL/LightExample/</a></pre>
 
+Light function
 ```
 function moveLight(reverse) {
     //console.log(LSizeF);
@@ -46,6 +47,7 @@ function moveLight(reverse) {
 }
 ```
 
+Circle function
 ```
 function renderCircle(r, x, y, color,color2, subAngle, size, reverse) {
     var noOfFans = 200;
