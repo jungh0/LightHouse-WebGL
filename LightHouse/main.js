@@ -13,8 +13,10 @@ var LSizeF = true
 
 var speed = 0
 
-var star_x=[]
-var star_y=[]
+var star_x = []
+var star_y = []
+var random_num
+
 window.onload = function init() {
     var canvas = document.getElementById("gl-canvas");
     gl = WebGLUtils.setupWebGL(canvas);
@@ -26,16 +28,21 @@ window.onload = function init() {
 
     window.requestAnimationFrame(object);
     canvas.addEventListener("mousemove", function () { onMouseUp(event) });
-    canvas.addEventListener("mouseup", function () { 
-        star_x.push(2*event.clientX/canvas.width-1)
-        star_y.push(2*(canvas.height-event.clientY)/canvas.height-1)      
-     });
+    canvas.addEventListener("mouseup", function () {
+        var tmpY = 2 * (canvas.height - event.clientY) / canvas.height - 1
+        if (tmpY > -0.2) {
+            star_x.push(2 * event.clientX / canvas.width - 1)
+            star_y.push(tmpY)
+        }
+    });
+    addListener()
 };
 
 function object() {
     bufferData = [];
     bufferDataC = [];
     bufferLocation = [];
+    random_num = (parseInt(Math.random() * 10000)) % star_x.length;
 
     background()
 
@@ -45,7 +52,7 @@ function object() {
         LightBack(); tmp = true;
     }
     moveLight(false)
-    if(!tmp){
+    if (!tmp) {
         LightBack()
     }
     //light end
@@ -87,6 +94,8 @@ function background() {
     makeBuffer(vertices, color)
     //sky end
 
+    makeStar(false);
+
     //cloud start
     var color = vec4(0.23, 0.29, 0.41, 1);
     makeCloud(0.15, 0.74, color)
@@ -102,7 +111,6 @@ function background() {
     var vertices = [vec2(-0.092, -0.14), vec2(0.14, -0.016), vec2(1, -0.056), vec2(1, -0.164)];
     makeBuffer(vertices, makeColor(color, vertices.length), false)
     //mountain end
-
 
     //moon start
     renderCircle(0.6, -0.46, 0.26, transparent, whiteLv1, 1, 1, false)
@@ -123,6 +131,8 @@ function mainvec(reverse) {
         makeBuffer(vertices, makeColor(color, vertices.length))
         //water color end
     }
+
+    makeStar(true);
 
     ///ground start
     var color = vec4(0.11, 0.18, 0.29, 1);
@@ -191,7 +201,6 @@ function mainvec(reverse) {
 
     var vertices = [vec2(0.41, 0.65), vec2(0.49, 0.65), vec2(0.49, 0.68), vec2(0.41, 0.68)];
     makeBuffer(vertices, makeColor(color, vertices.length), reverse)
-    makeStar();
     //lighthouse end
     if (reverse) {
         //moon start
@@ -205,7 +214,7 @@ function mainvec(reverse) {
         makeBuffer(vertices, makeColor(color, vertices.length))
         //water effect end
     }
-    
+
 }
 
 function lightHouseWindow() {

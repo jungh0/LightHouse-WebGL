@@ -1,10 +1,10 @@
 var bufferData = [];
 var bufferDataC = [];
 var bufferLocation = [];
-var buffercheck=[];
-var option=false;
-var count=10;
-var random_num=0;
+var buffercheck = [];
+var option = false;
+var count = 10;
+var random_num = 0;
 //버퍼 만들기
 function makeBuffer(vertices, colors, reverse) {
     if (reverse) {
@@ -21,53 +21,53 @@ function makeBuffer(vertices, colors, reverse) {
     colors.forEach(function (element, index, array) {
         bufferDataC.push(element)
     });
-    bufferLocation.push(vec2(bufferDataLen,bufferLen))
+    bufferLocation.push(vec2(bufferDataLen, bufferLen))
 }
-function renderStar(reverse,x,y){
-    var star=[
-        vec2(x,y-0.005*3),
-        vec2(x+0.005*3,y-0.008*3),
-        vec2(x+0.003*3,y-0.003*3),
-        vec2(x,y-0.005*3),
-        vec2(x+0.008*3,y+0.001*3),
-        vec2(x+0.002*3,y+0.001*3),
-        vec2(x,y-0.005*3),
-        vec2(x+0.002*3,y+0.001*3),
-        vec2(x,y+0.008*3),
-        vec2(x,y-0.005*3),
-        vec2(x,y+0.008*3),
-        vec2(x-0.002*3,y+0.001*3),
-        vec2(x,y-0.005*3),
-        vec2(x-0.002*3,y+0.001*3),
-        vec2(x-0.008*3,y+0.001*3),
-        vec2(x,y-0.005*3),
-        vec2(x-0.003*3,y-0.003*3),
-        vec2(x-0.005*3,y-0.008*3),
-    ] 
-    var star2=[
-        vec2(x,y-0.005*4),
-        vec2(x+0.005*4,y-0.008*4),
-        vec2(x+0.003*4,y-0.003*4),
-        vec2(x,y-0.005*4),
-        vec2(x+0.008*4,y+0.001*4),
-        vec2(x+0.002*4,y+0.001*4),
-        vec2(x,y-0.005*4),
-        vec2(x+0.002*4,y+0.001*4),
-        vec2(x,y+0.008*4),
-        vec2(x,y-0.005*4),
-        vec2(x,y+0.008*4),
-        vec2(x-0.002*4,y+0.001*4),
-        vec2(x,y-0.005*4),
-        vec2(x-0.002*4,y+0.001*4),
-        vec2(x-0.008*4,y+0.001*4),
-        vec2(x,y-0.005*4),
-        vec2(x-0.003*4,y-0.003*4),
-        vec2(x-0.005*4,y-0.008*4),
-    ] 
-    makeBuffer(star2, makeColorCircle(vec4(1, 1, 1, 0.05),vec4(1, 1, 1, 0.05), star2.length), reverse)
-    makeBuffer(star, makeColorCircle(vec4(1, 1, 1, 1),vec4(1, 1, 1, 1), star.length), reverse)
+function renderStar(reverse, x, y) {
+    var star = [
+        vec2(x, y - 0.005 * 3),
+        vec2(x + 0.005 * 3, y - 0.008 * 3),
+        vec2(x + 0.003 * 3, y - 0.003 * 3),
+        vec2(x, y - 0.005 * 3),
+        vec2(x + 0.008 * 3, y + 0.001 * 3),
+        vec2(x + 0.002 * 3, y + 0.001 * 3),
+        vec2(x, y - 0.005 * 3),
+        vec2(x + 0.002 * 3, y + 0.001 * 3),
+        vec2(x, y + 0.008 * 3),
+        vec2(x, y - 0.005 * 3),
+        vec2(x, y + 0.008 * 3),
+        vec2(x - 0.002 * 3, y + 0.001 * 3),
+        vec2(x, y - 0.005 * 3),
+        vec2(x - 0.002 * 3, y + 0.001 * 3),
+        vec2(x - 0.008 * 3, y + 0.001 * 3),
+        vec2(x, y - 0.005 * 3),
+        vec2(x - 0.003 * 3, y - 0.003 * 3),
+        vec2(x - 0.005 * 3, y - 0.008 * 3),
+    ]
+    var star2 = [
+        vec2(x, y - 0.005 * 4),
+        vec2(x + 0.005 * 4, y - 0.008 * 4),
+        vec2(x + 0.003 * 4, y - 0.003 * 4),
+        vec2(x, y - 0.005 * 4),
+        vec2(x + 0.008 * 4, y + 0.001 * 4),
+        vec2(x + 0.002 * 4, y + 0.001 * 4),
+        vec2(x, y - 0.005 * 4),
+        vec2(x + 0.002 * 4, y + 0.001 * 4),
+        vec2(x, y + 0.008 * 4),
+        vec2(x, y - 0.005 * 4),
+        vec2(x, y + 0.008 * 4),
+        vec2(x - 0.002 * 4, y + 0.001 * 4),
+        vec2(x, y - 0.005 * 4),
+        vec2(x - 0.002 * 4, y + 0.001 * 4),
+        vec2(x - 0.008 * 4, y + 0.001 * 4),
+        vec2(x, y - 0.005 * 4),
+        vec2(x - 0.003 * 4, y - 0.003 * 4),
+        vec2(x - 0.005 * 4, y - 0.008 * 4),
+    ]
+    makeBuffer(star2, makeColor(vec4(1, 1, 1, 0.05), star2.length), reverse)
+    makeBuffer(star, makeColor(vec4(1, 1, 1, 0.05), star.length), reverse)
 }
-function drawBuffer(){
+function drawBuffer() {
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
@@ -86,13 +86,13 @@ function drawBuffer(){
     var vColor = gl.getAttribLocation(program, "vColor");
     gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vColor);
-    if(option){
+    if (option) {
         bufferLocation.forEach(function (element, index, array) {
             gl.drawArrays(gl.TRIANGLES, element[0], element[1]);
         });
-        option=false;
+        option = false;
     }
-    else{
+    else {
         bufferLocation.forEach(function (element, index, array) {
             gl.drawArrays(gl.TRIANGLE_FAN, element[0], element[1]);
         });
@@ -100,7 +100,7 @@ function drawBuffer(){
 }
 
 //draw circle
-function renderCircle(r, x, y, color,color2, subAngle, size, reverse) {
+function renderCircle(r, x, y, color, color2, subAngle, size, reverse) {
     var noOfFans = 200;
     var centerOfCircle = vec2(x, y);
     var anglePerFna = (2 * Math.PI) / noOfFans;
@@ -117,23 +117,23 @@ function renderCircle(r, x, y, color,color2, subAngle, size, reverse) {
         );
     }
 
-    if(color2 == null){
-        makeBuffer(mVirtices, makeColorCircle(color,color, mVirtices.length), reverse)
-    }else{
-        makeBuffer(mVirtices, makeColorCircle(color,color2, mVirtices.length), reverse)
+    if (color2 == null) {
+        makeBuffer(mVirtices, makeColorCircle(color, color, mVirtices.length), reverse)
+    } else {
+        makeBuffer(mVirtices, makeColorCircle(color, color2, mVirtices.length), reverse)
     }
-    
+
 }
 
-function makeColorCircle(color,color2, cnt) {
+function makeColorCircle(color, color2, cnt) {
     var tmp = [];
     for (var c = 0; c < cnt; c++) {
-        if(c == 0){
+        if (c == 0) {
             tmp.push(color2)
-        }else{
+        } else {
             tmp.push(color)
         }
-        
+
     }
     return tmp;
 }
@@ -155,7 +155,7 @@ function moveLight(reverse) {
         var yelloT = vec4(1, 1, 0, 0.45);
     }
     renderCircle(3, 0.44, 0.53, transparent, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, reverse)
-    
+
     if (LSize == 10) {
         LSizeF = false
     }
@@ -204,37 +204,33 @@ function onMouseUp(event) {
 
 //구름
 function makeCloud(x, y, white) {
-    renderCircle(0.1, 0.0 + x, 0.3 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.15 + x, 0.33 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.3 + x, 0.32 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.4 + x, 0.25 + y, white, null, Math.PI, 1,false)
+    renderCircle(0.1, 0.0 + x, 0.3 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.15 + x, 0.33 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.3 + x, 0.32 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.4 + x, 0.25 + y, white, null, Math.PI, 1, false)
 
-    renderCircle(0.1, 0.0 + x, 0.2 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.1 + x, 0.2 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.2 + x, 0.15 + y, white, null, Math.PI, 1,false)
-    renderCircle(0.1, 0.3 + x, 0.2 + y, white, null, Math.PI, 1,false)
+    renderCircle(0.1, 0.0 + x, 0.2 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.1 + x, 0.2 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.2 + x, 0.15 + y, white, null, Math.PI, 1, false)
+    renderCircle(0.1, 0.3 + x, 0.2 + y, white, null, Math.PI, 1, false)
 }
 //별
-function makeStar(){
-    var i=0;
-    console.log(count);
-    console.log("asdasd"+random_num)
-    if(count==20)
-    {
-        random_num=(parseInt(Math.random()*10000))%star_x.length;
-        count=0;
+function makeStar(reverse) {
+    var i = 0;
+    //console.log(count);
+    //console.log("asdasd" + random_num)
+    if (count == 20) {
+        //random_num = (parseInt(Math.random() * 10000)) % star_x.length;
+        count = 0;
     }
-    for(i=0;i<star_x.length;i=i+1){
-        if(star_x.length>3)
-        {
-           if(i!=random_num){
-                renderStar(false,star_x[i],star_y[i]);
-                renderStar(true,star_x[i],star_y[i]);
+    for (i = 0; i < star_x.length; i = i + 1) {
+        if (star_x.length > 3) {
+            if (i != random_num) {
+                renderStar(reverse, star_x[i], star_y[i]);
             }
         }
-        else{
-                renderStar(false,star_x[i],star_y[i]);
-                renderStar(true,star_x[i],star_y[i]);
+        else {
+            renderStar(reverse, star_x[i], star_y[i]);
         }
     }
     count++;
