@@ -8,7 +8,7 @@
 <pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightExample/">https://jungh0.github.io/LightHouse-WebGL/LightExample/</a></pre>
 
 Light function
-```
+```js
 function moveLight(reverse) {
     //console.log(LSizeF);
     if (reverse) {
@@ -48,7 +48,7 @@ function moveLight(reverse) {
 ```
 
 Circle function
-```
+```js
 function renderCircle(r, x, y, color,color2, subAngle, size, reverse) {
     var noOfFans = 200;
     var centerOfCircle = vec2(x, y);
