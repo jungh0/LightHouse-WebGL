@@ -3,7 +3,7 @@ var points;
 
 var white = vec4(1, 1, 1, 1);
 var transparent = vec4(0, 0, 0, 0);
-var whiteLv1 = vec4(1, 1, 1, 0.2);
+var black = vec4(0, 0, 0, 1);
 
 var LightVec = -1 //등대 방향 바꾸기 1: 왼쪽 -1: 오른쪽
 var LAngle = 1
@@ -32,21 +32,17 @@ function object() {
     bufferDataC = [];
     bufferLocation = [];
 
-    var color = vec4(0, 0, 0, 1);
     var vertices = [vec2(-1, -1), vec2(-1, 1), vec2(1, 1), vec2(1, -1),];
-    makeBuffer(vertices, makeColor(color, vertices.length))
+    makeBuffer(vertices, makeColor(black, vertices.length))
 
-    moveLight(false)
-
+    moveLight(0, 0, false)
 
     drawBuffer()
-
     if (speed == 0) {
         window.requestAnimationFrame(object);
     } else {
         setTimeout(object, speed)
     }
-
 }
 
 //슬라이드 리스너

@@ -94,14 +94,14 @@ function makeColor(color, cnt) {
 }
 
 //빛 움직임
-function moveLight(reverse) {
+function moveLight(x,y,reverse) {
     //console.log(LSizeF);
     if (reverse) {
         var yelloT = vec4(1, 1, 0, 0.1);
     } else {
         var yelloT = vec4(1, 1, 0, 0.45);
     }
-    renderCircle(3, 0, 0, transparent, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, reverse)
+    renderCircle(3, x, y, transparent, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, reverse)
     
     if (LSize == 10) {
         LSizeF = false
