@@ -11,11 +11,12 @@ var LAngleF = true
 var LSize = 2
 var LSizeF = true
 
-var speed = 0
+var speed = 0 //set light speed
 
-var star_x = []
-var star_y = []
+var star_x = [] //star x
+var star_y = [] //star y
 
+//init
 window.onload = function init() {
     var canvas = document.getElementById("gl-canvas");
     gl = WebGLUtils.setupWebGL(canvas);
@@ -25,9 +26,9 @@ window.onload = function init() {
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-    window.requestAnimationFrame(object);
-    canvas.addEventListener("mousemove", function () { onMouseUp(event) });
-    canvas.addEventListener("mouseup", function () {
+    window.requestAnimationFrame(object); //make object
+    canvas.addEventListener("mousemove", function () { onMouseUp(event) }); //mouse locatin listener
+    canvas.addEventListener("mouseup", function () { //mouse star listener
         var tmpY = 2 * (canvas.height - event.clientY) / canvas.height - 1
         if (tmpY > -0.2) {
             star_x.push(2 * event.clientX / canvas.width - 1)
@@ -38,10 +39,12 @@ window.onload = function init() {
 };
 
 function object() {
+    //init buffer
     bufferData = [];
     bufferDataC = [];
     bufferLocation = [];
-	
+
+    //set background
     background()
 
     //light start
@@ -49,13 +52,14 @@ function object() {
     if ((LSizeF && LightVec == 1) || (!LSizeF && LightVec == -1)) {
         LightBack(); tmp = true;
     }
-    moveLight(false)
+    moveLight(false) //light effect
     if (!tmp) {
         LightBack()
     }
+    lightHouseWindow()
     //light end
 
-    lightHouseWindow()
+    //draw object with buffer
     drawBuffer()
     if (speed == 0) {
         window.requestAnimationFrame(object);

@@ -1,11 +1,15 @@
+//init buffer
 var bufferData = [];
 var bufferDataC = [];
 var bufferLocation = [];
 var buffercheck = [];
+
+//init star
 var option = false;
 var count = 10;
 var random_num = 0;
-//버퍼 만들기
+
+//make buffer
 function makeBuffer(vertices, colors, reverse) {
     if (reverse) {
         vertices.forEach(function (element, index, array) {
@@ -23,6 +27,8 @@ function makeBuffer(vertices, colors, reverse) {
     });
     bufferLocation.push(vec2(bufferDataLen, bufferLen))
 }
+
+//star object
 function renderStar(reverse, x, y) {
     var star = [
         vec2(x, y - 0.005 * 3),
@@ -67,6 +73,8 @@ function renderStar(reverse, x, y) {
     makeBuffer(star2, makeColor(vec4(1, 1, 1, 0.05), star2.length), reverse)
     makeBuffer(star, makeColor(vec4(1, 1, 1, 0.05), star.length), reverse)
 }
+
+//draw buffer
 function drawBuffer() {
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
@@ -125,6 +133,7 @@ function renderCircle(r, x, y, color, color2, subAngle, size, reverse) {
 
 }
 
+//make color gradation
 function makeColorCircle(color, color2, cnt) {
     var tmp = [];
     for (var c = 0; c < cnt; c++) {
@@ -138,6 +147,7 @@ function makeColorCircle(color, color2, cnt) {
     return tmp;
 }
 
+//make color non-gradation
 function makeColor(color, cnt) {
     var tmp = [];
     for (var c = 0; c < cnt; c++) {
@@ -146,7 +156,7 @@ function makeColor(color, cnt) {
     return tmp;
 }
 
-//빛 움직임
+//Light effect
 function moveLight(reverse) {
     //console.log(LSizeF);
     if (reverse) {
@@ -184,7 +194,7 @@ function moveLight(reverse) {
     }
 }
 
-//마우스 리스너
+//get mouse location
 function onMouseUp(event) {
     var mx = event.clientX;
     var my = event.clientY;
@@ -202,7 +212,7 @@ function onMouseUp(event) {
     document.getElementById("location").innerHTML = tmp;
 }
 
-//구름
+//cloud
 function makeCloud(x, y, white) {
     renderCircle(0.1, 0.0 + x, 0.3 + y, white, null, Math.PI, 1, false)
     renderCircle(0.1, 0.15 + x, 0.33 + y, white, null, Math.PI, 1, false)
@@ -214,7 +224,8 @@ function makeCloud(x, y, white) {
     renderCircle(0.1, 0.2 + x, 0.15 + y, white, null, Math.PI, 1, false)
     renderCircle(0.1, 0.3 + x, 0.2 + y, white, null, Math.PI, 1, false)
 }
-//별
+
+//start function
 function makeStar(reverse) {
     var i = 0;
     //console.log(count);
@@ -233,7 +244,7 @@ function makeStar(reverse) {
             renderStar(reverse, star_x[i], star_y[i]);
         }
     }
-    if(!reverse){
-		count++;
-	}
+    if (!reverse) {
+        count++;
+    }
 }
