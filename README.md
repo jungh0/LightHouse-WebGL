@@ -4,7 +4,11 @@
 
 <pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightHouse/">https://jungh0.github.io/LightHouse-WebGL/LightHouse/</a></pre>
 
-## LightHouse Source
+## LightHouse 
+<img src="https://user-images.githubusercontent.com/8678595/66697213-949aaa80-ed0e-11e9-8da6-1847b1233308.gif" width="400px">
+
+
+## Light Source
 <img src="https://user-images.githubusercontent.com/8678595/66541973-228a6000-eb6c-11e9-82cd-e72d420c6964.gif" width="400px">
 
 <pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightExample/">https://jungh0.github.io/LightHouse-WebGL/LightExample/</a></pre>
