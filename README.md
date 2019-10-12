@@ -13,16 +13,23 @@
 
 <pre><a href="https://jungh0.github.io/LightHouse-WebGL/LightExample/">https://jungh0.github.io/LightHouse-WebGL/LightExample/</a></pre>
 
-**Light function**
+**Implement Light (main.js)**
 ```js
 function moveLight(reverse) {
+    moveLight(0, 0, false)
+}
+```
+
+**MoveLight function (util.js)**
+```js
+function moveLight(x,y,reverse) {
     //console.log(LSizeF);
     if (reverse) {
         var yelloT = vec4(1, 1, 0, 0.1);
     } else {
         var yelloT = vec4(1, 1, 0, 0.45);
     }
-    renderCircle(3, 0, 0, transparent, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, reverse)
+    renderCircle(3, x, y, transparent, yelloT, Math.PI * LAngle / 2 * LightVec, LSize, reverse)
     
     if (LSize == 10) {
         LSizeF = false
@@ -51,32 +58,6 @@ function moveLight(reverse) {
         LSize = 1
     }
 }
-```
-
-**Circle function**
-```js
-function renderCircle(r, x, y, color,color2, subAngle, size, reverse) {
-    var noOfFans = 200;
-    var centerOfCircle = vec2(x, y);
-    var anglePerFna = (2 * Math.PI) / noOfFans;
-    var mVirtices = [];
-    mVirtices.push(centerOfCircle);
-
-    for (var i = 0; i <= noOfFans / size; i++) {
-        var angle = anglePerFna * (i + 1);
-        mVirtices.push(
-            vec2(
-                x + Math.cos(angle + subAngle) * r,
-                y + Math.sin(angle + subAngle) * r
-            )
-        );
-    }
-
-    if(color2 == null){
-        makeBuffer(mVirtices, makeColorCircle(color,color, mVirtices.length), reverse)
-    }else{
-        makeBuffer(mVirtices, makeColorCircle(color,color2, mVirtices.length), reverse)
-    } 
 }
 ```
 
